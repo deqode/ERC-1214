@@ -7,7 +7,7 @@ import "./DelegateProxy.sol";
 /**
  * Based of the zeppelin token contract.
  */
-contract UpgradeableToken is Storage, DelegateProxy {
+contract ERC1214 is Storage, DelegateProxy {
 
   function name() public constant returns (string) {
     return "Upgradeable Token";

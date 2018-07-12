@@ -1,17 +1,17 @@
 const LogicBank = artifacts.require('./helpers/MockLogicBank.sol');
-const UpgradeableToken = artifacts.require('./UpgradeableToken.sol');
+const ERC1214 = artifacts.require('./ERC1214.sol');
 const Founder = web3.eth.accounts[0];
 const Investor = web3.eth.accounts[1];
 const assertRevert = require("./helpers/assertRevert");
 
-contract('UpgradeableToken', (accounts) => {
+contract('ERC1214', (accounts) => {
   let proxy;
   let proxyInstance;
   let controller;
 
   before(async () => {
     controller = await LogicBank.new(100000e18);
-    proxyInstance = await UpgradeableToken.new();
+    proxyInstance = await ERC1214.new();
     await proxyInstance.setKeyHolder('controller', controller.address);
     proxy = LogicBank.at(proxyInstance.address);
     await proxy.initialize(100000e18);
